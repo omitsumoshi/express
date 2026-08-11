@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const hbs = require("express-handlebars");
@@ -12,8 +13,10 @@ const Post = require('./app/models/PostModel');
 const blogRouter = require('./app/router/blogRouter');
 const blogApiRouter = require('./app/router/blogApiRouter');
 const userRouter = require('./app/router/userRouter');
+const userApiRouter = require('./app/router/userApiRouter');
 
 const authMiddleware = require("./app/middlewares/authMiddleware");
+const authApiMiddleware = require("./app/middlewares/authApiMiddleware");
 
 app.use('/files', express.static('public'))
 
@@ -58,9 +61,10 @@ app.use("/user", userRouter);
 
 // Api Router
 
-app.use("/api/posts", blogApiRouter);
+app.use("/api/posts", authApiMiddleware, blogApiRouter);
+app.use("/api/user", authApiMiddleware, userApiRouter);
 
 // In order for app.get to work, we also need to set the server
-app.listen(8080, function(){
-    console.log('Server Node.js is working')
+app.listen(process.env.APP_PORT || 8080, function(){
+    console.log('Server Node.js is working on port ' + (process.env.APP_PORT || 8080))
 });

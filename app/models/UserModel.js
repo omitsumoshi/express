@@ -43,7 +43,7 @@ User.pre('save', async function() {
 User.methods.generateAuthToken = (user) => {
     // Method sign will be responsible for generating the token and the token needs to be connected to an users information?
     // When decoding the token, it will return the user id. Second field is a string of symbols, third one is configuration item. Here we get the token to expire in 1hr
-    const token = jwt.sign({_id: user._id}, "secretKey", { expiresIn: "1h"});
+    const token = jwt.sign({_id: user._id}, process.env.TOKEN_KEY, { expiresIn: "1h"});
     // The generated token will be returned here:
     return token;
 }

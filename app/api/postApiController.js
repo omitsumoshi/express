@@ -23,11 +23,11 @@ module.exports = {
         },
          create:(req, res) =>{
                 // Spreading(making a copy) of read data and adding an author field to it
-                const newPost = new Post({...req.body, author: '6a70db557a566ec8f22f7732' });
+                const newPost = new Post({...req.body, author: req.userId });
                 newPost.save();
         
                 User.updateOne(
-                    { _id: '6a70db557a566ec8f22f7732' },
+                    { _id: req.userId },
                     {$push: { posts: newPost._id }})
                     .catch((err)=>{
                     res.status(500).json({error: err});
