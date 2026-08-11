@@ -58,7 +58,7 @@ app.use("/user", userRouter);
 
 // Api Router
 
-// app.use("/api/posts", blogApiRouter);
+app.use("/api/posts", blogApiRouter);
 
 // In order for app.get to work, we also need to set the server
 app.listen(8080, function(){
