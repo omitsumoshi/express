@@ -1,0 +1,13 @@
+<div class="container">
+    <h2>Single Post</h2>
+
+    <div class="card mb-3">
+            <div class="card-body">{{log this}}
+                <h2 class="card-title">{{title}}</h2>
+                <p class="card-text">{{content}}</p>
+                <p class="card-text">{{author.name}}</p>
+                <a href="/blog/edit/{{_id}}" class="btn btn-primary">Edit</a>
+                <a href="/blog/delete/{{_id}}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+</div>

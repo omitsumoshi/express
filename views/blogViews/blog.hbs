@@ -1,0 +1,15 @@
+<div class="container">
+    <h2>Posts list</h2>
+
+    {{#each posts}}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h2 class="card-title">{{title}}</h2>
+                <p class="card-text">{{content}}</p>
+                <p class="card-text"><a href="blog?authorId={{author._id}}">{{author.name}}</a></p>
+                <a href="blog/{{_id}}" class="btn btn-primary">More</a>
+            </div>
+        </div>
+    {{/each}}
+    <a href="/blog/add" class="btn btn-success">Add post</a>
+</div>

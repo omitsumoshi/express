@@ -1,0 +1,15 @@
+<div class="container">
+    <h2>Edit Post</h2>
+
+    <form action="/blog/edit/{{_id}}" method="POST">
+    <div class="mb-3">
+        <label for="title" class="form-label">Post title</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{title}}" />
+    </div>
+     <div class="mb-3">
+        <label for="content" class="form-label">Post content</label>
+        <textarea name="content" id="content" cols="30" rows="3" class="form-control" >{{content}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
